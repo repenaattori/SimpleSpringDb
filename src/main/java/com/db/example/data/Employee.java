@@ -10,7 +10,9 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+    
     public String name;
+
     @Column(name="company_id")  //corredponds to company_id column in database table
     public Long companyId;
 
