@@ -13,6 +13,7 @@ import com.db.example.service.CompanyService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Esimerkissä käytetään tietokantaa, jossa on employee ja company taulut ja yhteys niiden välillä
@@ -27,11 +28,13 @@ public class CompanyRestController {
 
     @PostMapping("addcompany")
     public String addCompany(@RequestBody Company company) {
+        companySercive.saveCompany(company);
         return "Ok";
     }
 
     @PostMapping("addemployee")
     public String addEmployee(@RequestBody Employee employee) {
+        companySercive.saveEmployee(employee);
         return "Ok";
     }
 
@@ -46,7 +49,7 @@ public class CompanyRestController {
     }
 
     @GetMapping("employeecompany")
-    public Company getEmployeeCompany(@RequestBody Long employeeId){
+    public Company getEmployeeCompany(@RequestParam Long employeeId){
         return companySercive.getCustomerCompany(employeeId);
     }
   

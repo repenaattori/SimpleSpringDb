@@ -1,4 +1,5 @@
 package com.db.example.data;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     public String name;
+    @Column(name="company_id")  //corredponds to company_id column in database table
     public Long companyId;
 
     public Employee() {}

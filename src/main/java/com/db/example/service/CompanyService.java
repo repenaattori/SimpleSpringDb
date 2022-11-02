@@ -49,6 +49,8 @@ public class CompanyService {
 
         //Haetaan työntekijän yrityksen id
         Long companyId = employee.get().companyId;
+        
+        
 
         //Palautetaan yritys id:n perusteella kannasta 
         //(ei tarvitse tarkistaa, koska jos työntekijä löytyy, täytyy myös company id olla validi foreign key)
