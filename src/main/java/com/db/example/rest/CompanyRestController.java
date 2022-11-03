@@ -24,33 +24,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CompanyRestController {
 
     @Autowired
-    CompanyService companySercive;
+    CompanyService companyService;
 
     @PostMapping("addcompany")
     public String addCompany(@RequestBody Company company) {
-        companySercive.saveCompany(company);
+        companyService.saveCompany(company);
         return "Ok";
     }
 
     @PostMapping("addemployee")
     public String addEmployee(@RequestBody Employee employee) {
-        companySercive.saveEmployee(employee);
+        companyService.saveEmployee(employee);
         return "Ok";
     }
 
     @GetMapping("employees")
     public List<Employee> getEmployess(){
-        return companySercive.getEmpoyees();
+        return companyService.getEmpoyees();
     }
 
     @GetMapping("companies")
     public List<Company> getCompanies(){
-        return companySercive.getCompanies();
+        return companyService.getCompanies();
     }
 
     @GetMapping("employeecompany")
     public Company getEmployeeCompany(@RequestParam Long employeeId){
-        return companySercive.getCustomerCompany(employeeId);
+        return companyService.getEmployeeCompany(employeeId);
     }
   
 }

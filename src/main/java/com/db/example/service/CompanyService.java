@@ -13,14 +13,15 @@ import com.db.example.repo.EmployeeRepository;
 
 @Service
 public class CompanyService {
+
     @Autowired
     CompanyRepository companyRepository;
 
     @Autowired
     EmployeeRepository employeeRepository;
 
-    public void saveCompany(Company employee){
-        companyRepository.save(employee);
+    public void saveCompany(Company company){
+        companyRepository.save(company);
     }
     
     public void saveEmployee(Employee employee){
@@ -38,7 +39,8 @@ public class CompanyService {
     /**
      * Etsii työntekijän yrityksen
      */
-    public Company getCustomerCompany(Long employeeId){
+    public Company getEmployeeCompany(Long employeeId){
+        
         //Haetaan työntekijä kannasta id:llä
         Optional<Employee> employee = employeeRepository.findById(employeeId);
 
