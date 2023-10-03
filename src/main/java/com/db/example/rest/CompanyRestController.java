@@ -2,7 +2,6 @@ package com.db.example.rest;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.db.example.data.Company;
@@ -23,8 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class CompanyRestController {
 
-    @Autowired
     CompanyService companyService;
+
+    public CompanyRestController(CompanyService companyService){
+        this.companyService = companyService;
+    }
 
     @PostMapping("addcompany")
     public String addCompany(@RequestBody Company company) {
@@ -49,7 +51,7 @@ public class CompanyRestController {
     }
 
     @GetMapping("employeecompany")
-    public Company getEmployeeCompany(@RequestParam Long employeeId){
+    public Company getEmployeeCompany(@RequestParam Integer employeeId){
         return companyService.getEmployeeCompany(employeeId);
     }
   

@@ -6,5 +6,5 @@ import com.db.example.data.Employee;
 
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {    
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {    
 }

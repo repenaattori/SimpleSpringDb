@@ -3,7 +3,6 @@ package com.db.example.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.db.example.data.Company;
@@ -14,11 +13,13 @@ import com.db.example.repo.EmployeeRepository;
 @Service
 public class CompanyService {
 
-    @Autowired
     CompanyRepository companyRepository;
-
-    @Autowired
     EmployeeRepository employeeRepository;
+
+    public CompanyService(CompanyRepository companyRepository, EmployeeRepository employeeRepository){
+        this.companyRepository = companyRepository;
+        this.employeeRepository = employeeRepository;
+    }
 
     public void saveCompany(Company company){
         companyRepository.save(company);
@@ -39,7 +40,7 @@ public class CompanyService {
     /**
      * Etsii työntekijän yrityksen
      */
-    public Company getEmployeeCompany(Long employeeId){
+    public Company getEmployeeCompany(int employeeId){
         
         //Haetaan työntekijä kannasta id:llä
         Optional<Employee> employee = employeeRepository.findById(employeeId);
@@ -50,7 +51,7 @@ public class CompanyService {
         }
 
         //Haetaan työntekijän yrityksen id
-        Long companyId = employee.get().companyId;
+        int companyId = employee.get().companyId;
         
         
         //Palautetaan yritys id:n perusteella kannasta 

@@ -1,26 +1,25 @@
 package com.db.example.data;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    public Integer id;
     
     public String name;
 
-    @Column(name="company_id")  //corredponds to company_id column in database table
-    public Long companyId;
+    public Integer companyId;
 
     public Employee() {}
 
-    public Employee(String name, Long companyId) {
+    public Employee(String name, int companyId) {
         this.name = name;
         this.companyId = companyId;
     }
